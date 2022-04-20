@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import 'react-toastify/dist/ReactToastify.css';
+import {BrowserRouter} from 'react-router-dom'
+import AutthProvider from './contexts/auth'
+import Routes from './routes'
+import { ToastContainer } from 'react-toastify'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    return(
+    <AutthProvider>
+        <BrowserRouter>
+            <ToastContainer autoClose={3000}/>
+            <Routes/>
+        </BrowserRouter>
+    </AutthProvider>
+    )
 }
-
-export default App;
