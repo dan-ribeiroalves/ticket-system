@@ -4,6 +4,7 @@ import Header from '../../components/Header'
 import Title from '../../components/Title'
 import { FiSettings, FiUpload } from 'react-icons/fi'
 import { AuthContext } from '../../contexts/auth'
+import { toast } from 'react-toastify'
 import avatar from '../../assets/avatar.png'
 import firebase from '../../services/firebaseConnection'
 
@@ -55,10 +56,12 @@ export default function Profile(){
                         ...user,
                         avatarUrl: urlFoto,
                         name: name
+                        
                     }
-
+                
                     setUser(data)
                     storageUser(data)
+                    
                 })
             })
         })
@@ -79,11 +82,13 @@ export default function Profile(){
                     ...user,
                     name: name
                 }
+                toast.success('Editado com sucesso!')
                 setUser(data)
                 storageUser(data)
             })
         }
         else if(name !== '' && avatarUrl !== null){
+            toast.success('Editado com sucesso!')
             handleUpload()
         }
     }
